@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Local Projects\\csharp\\activity\\activity.csproj": {}
+    "D:\\Local Projects\\csharp\\Activity\\Activity.csproj": {}
   },
   "projects": {
-    "D:\\Local Projects\\csharp\\activity\\activity.csproj": {
+    "D:\\Local Projects\\csharp\\Activity\\Activity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Local Projects\\csharp\\activity\\activity.csproj",
-        "projectName": "activity",
-        "projectPath": "D:\\Local Projects\\csharp\\activity\\activity.csproj",
+        "projectUniqueName": "D:\\Local Projects\\csharp\\Activity\\Activity.csproj",
+        "projectName": "Activity",
+        "projectPath": "D:\\Local Projects\\csharp\\Activity\\Activity.csproj",
         "packagesPath": "C:\\Users\\codru\\.nuget\\packages\\",
-        "outputPath": "D:\\Local Projects\\csharp\\activity\\obj\\",
+        "outputPath": "D:\\Local Projects\\csharp\\Activity\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -41,6 +41,12 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "AspNetCore.IQueryable.Extensions": {
+              "target": "Package",
+              "version": "(, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\Local Projects\\csharp\\activity\\activity.csproj",
+  "FilePath": "d:\\Local Projects\\csharp\\Activity\\Activity.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -10172,7 +10172,7 @@
     ],
     "CSharpLanguageVersion": 800
   },
-  "RootNamespace": "activity",
+  "RootNamespace": "Activity",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

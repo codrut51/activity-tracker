@@ -10,9 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Activity.Models;
+using Activity.Repository;
 
-namespace activity
-{
+namespace Activity
+{ 
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -26,6 +28,7 @@ namespace activity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IRepository<ActivityModel>, ActivityRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

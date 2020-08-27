@@ -1,1 +1,3 @@
 bin/
+Requirements/*/
+Requirements/database.env
