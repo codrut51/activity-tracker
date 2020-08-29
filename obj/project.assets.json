@@ -110,7 +110,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
-      "AspNetCore.IQueryable.Extensions"
+      "AspNetCore.IQueryable.Extensions >= 3.1.6"
     ]
   },
   "packageFolders": {
@@ -120,11 +120,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Local Projects\\csharp\\Activity\\Activity.csproj",
-      "projectName": "Activity",
-      "projectPath": "D:\\Local Projects\\csharp\\Activity\\Activity.csproj",
+      "projectUniqueName": "D:\\Local Projects\\csharp\\activity\\activity.csproj",
+      "projectName": "activity",
+      "projectPath": "D:\\Local Projects\\csharp\\activity\\activity.csproj",
       "packagesPath": "C:\\Users\\codru\\.nuget\\packages\\",
-      "outputPath": "D:\\Local Projects\\csharp\\Activity\\obj\\",
+      "outputPath": "D:\\Local Projects\\csharp\\activity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -157,7 +157,7 @@
         "dependencies": {
           "AspNetCore.IQueryable.Extensions": {
             "target": "Package",
-            "version": "(, )"
+            "version": "[3.1.6, )"
           }
         },
         "imports": [
