@@ -24,9 +24,9 @@ namespace Activity.Controllers
 
         //GET api/activity
         [HttpGet]
-        public ActionResult<IEnumerable<ActivityModel>> GetAllActivities()
+        public ActionResult<IEnumerable<ActivityDto>> GetAllActivities()
         {
-            return Ok(activityRepo.getAll());
+            return Ok(mapper.Map<IEnumerable<ActivityModel>, IEnumerable<ActivityDto>>(activityRepo.getAll()));
         }
 
         //GET api/activity/{id}
