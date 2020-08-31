@@ -1,34 +1,48 @@
 using Activity.Models;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
-namespace Activity.Repository {
-    public class ActivityRepository : IRepository<ActivityModel> {
-        
-        public IQueryable<ActivityModel> getAll() {
-            List<ActivityModel> activities = new List<ActivityModel>();
-            activities.Add(new ActivityModel() {
-                Id = "1231231",
-                Title = "My Title",
-                Description = "My description"
-            });
-            return activities.AsQueryable();
+namespace Activity.Repository
+{
+    public class ActivityRepository : IRepository<ActivityModel>
+    {
+
+        private readonly DbContextPg db;
+        public ActivityRepository(DbContextPg db)
+        {
+            this.db = db;
         }
 
-        public ActivityModel getOne() {
-            return new ActivityModel() {
-                Id = "1231231",
-                Title = "My Title",
-                Description = "My description"
-            };
+        public IQueryable<ActivityModel> getAll()
+        {
+            if (db.Activity.Count() != 0)
+            {
+                return db.Activity.AsQueryable();
+            }
+            return new List<ActivityModel>().AsQueryable();
         }
 
-        public bool addOne(ActivityModel item) {
-            return true;
-        } 
+        public ActivityModel getOne(Guid id)
+        {
+            if(db.Activity.Count() != 0)
+            {
+                return db.Activity.FirstOrDefault(predicate => predicate.Id.Equals(id));
+            }
+            return null;
+        }
 
-        public bool updateOne(ActivityModel item) {
+        public bool addOne(ActivityModel item)
+        {
+            db.Activity.Add(item);
+            int count = db.SaveChanges();
+            return count > 0;
+        }
+
+        public bool updateOne(ActivityModel item)
+        {
+            db.Activity.Update(item);
             return true;
-        } 
+        }
     }
 }

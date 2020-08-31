@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace Activity.Repository 
@@ -6,8 +7,9 @@ namespace Activity.Repository
                      where T : new()
     {
         IQueryable<T> getAll();
-        T getOne();
+        T getOne(Guid id);
         bool addOne(T item);
         bool updateOne(T item);
     }
+
 }

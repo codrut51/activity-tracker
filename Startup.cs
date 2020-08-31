@@ -12,6 +12,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Activity.Models;
 using Activity.Repository;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Activity
 { 
@@ -27,7 +29,14 @@ namespace Activity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFrameworkNpgsql().AddDbContext<DbContextPg>(opt => 
+                opt.UseNpgsql(Configuration.GetConnectionString("PostgressConnection"))
+            );
+
             services.AddControllers();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<IRepository<ActivityModel>, ActivityRepository>();
         }
 
