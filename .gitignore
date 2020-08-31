@@ -2,3 +2,6 @@ bin/
 Requirements/*/
 Requirements/database.env
 obj/
+obj/*
+
+appsettings.json
