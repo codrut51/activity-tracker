@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Activity.Models
@@ -7,6 +8,7 @@ namespace Activity.Models
     [Table("users")]
     public class UsersModel
     {
+        [Key]
         [Column("id")]
         public Guid Id { get; set; }
         

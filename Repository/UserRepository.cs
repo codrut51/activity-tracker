@@ -4,9 +4,8 @@ using Activity.Models;
 namespace Activity.Repository {
     public class UserRepository : IRepository<UsersModel>
     {
-        public bool addOne(UsersModel item)
+        public void addOne(UsersModel item)
         {
-            return false;
         }
 
         public System.Linq.IQueryable<UsersModel> getAll()
@@ -19,9 +18,13 @@ namespace Activity.Repository {
             return null;
         }
 
-        public bool updateOne(UsersModel item)
+        public bool saveChanges()
         {
-            return false;
+            throw new NotImplementedException();
+        }
+
+        public void updateOne(UsersModel item)
+        {
         }
     }
 }

@@ -32,17 +32,25 @@ namespace Activity.Repository
             return null;
         }
 
-        public bool addOne(ActivityModel item)
+        public void addOne(ActivityModel item)
         {
+            if(item == null) {
+                throw new ArgumentNullException(nameof(item));
+            }
             db.Activity.Add(item);
-            int count = db.SaveChanges();
-            return count > 0;
         }
 
-        public bool updateOne(ActivityModel item)
+        public void updateOne(ActivityModel item)
         {
+            if(item == null) {
+                throw new ArgumentNullException(nameof(item));
+            }
             db.Activity.Update(item);
-            return true;
+        }
+
+        public bool saveChanges()
+        {
+            return (db.SaveChanges() >= 0);
         }
     }
 }

@@ -8,8 +8,9 @@ namespace Activity.Repository
     {
         IQueryable<T> getAll();
         T getOne(Guid id);
-        bool addOne(T item);
-        bool updateOne(T item);
+        void addOne(T item);
+        void updateOne(T item);
+        bool saveChanges();
     }
 
 }

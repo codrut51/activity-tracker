@@ -42,13 +42,12 @@ namespace Activity.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddActivity(ActivityModel am)
+        public ActionResult<ActivityModel> AddActivity(ActivityViewDto am)
         {
-            Debug.WriteLine("Hello!");
-            Debug.WriteLine(am.Id.ToString() + " " + am.Title + " " +
-                            am.User + " " + am.Description + " " +
-                            am.CreatedOn + " " + am.LastModified);
-            return Ok();
+           var activityModel = mapper.Map<ActivityModel>(am);
+        //    activityRepo.addOne(activityModel);
+        //    activityRepo.saveChanges();
+            return Ok(activityModel);
         }
 
         [HttpPut]
