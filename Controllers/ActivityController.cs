@@ -44,9 +44,9 @@ namespace Activity.Controllers
         [HttpPost]
         public ActionResult<ActivityModel> AddActivity(ActivityViewDto am)
         {
-           var activityModel = mapper.Map<ActivityModel>(am);
-        //    activityRepo.addOne(activityModel);
-        //    activityRepo.saveChanges();
+            var activityModel = mapper.Map<ActivityModel>(am);
+            //    activityRepo.addOne(activityModel);
+            //    activityRepo.saveChanges();
             return Ok(activityModel);
         }
 

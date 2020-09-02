@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 
-namespace Activity.Repository 
+namespace Activity.Repository
 {
-    public interface IRepository<T> 
+    public interface IRepository<T>
                      where T : new()
     {
         IQueryable<T> getAll();

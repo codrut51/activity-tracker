@@ -25,7 +25,7 @@ namespace Activity.Repository
 
         public ActivityModel getOne(Guid id)
         {
-            if(db.Activity.Count() != 0)
+            if (db.Activity.Count() != 0)
             {
                 return db.Activity.FirstOrDefault(predicate => predicate.Id.Equals(id));
             }
@@ -34,7 +34,8 @@ namespace Activity.Repository
 
         public void addOne(ActivityModel item)
         {
-            if(item == null) {
+            if (item == null)
+            {
                 throw new ArgumentNullException(nameof(item));
             }
             db.Activity.Add(item);
@@ -42,7 +43,8 @@ namespace Activity.Repository
 
         public void updateOne(ActivityModel item)
         {
-            if(item == null) {
+            if (item == null)
+            {
                 throw new ArgumentNullException(nameof(item));
             }
             db.Activity.Update(item);

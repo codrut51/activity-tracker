@@ -1,7 +1,8 @@
 using System;
 using Activity.Models;
 
-namespace Activity.Repository {
+namespace Activity.Repository
+{
     public class UserRepository : IRepository<UsersModel>
     {
         public void addOne(UsersModel item)

@@ -14,7 +14,7 @@ namespace Activity.Models
         [Required]
         [ForeignKey("userid")]
         public UsersModel User { get; set; }
-        
+
         [Required]
         [Column("title")]
         public string Title { get; set; }
@@ -25,7 +25,7 @@ namespace Activity.Models
         [Required]
         [Column("created_on")]
         public DateTime CreatedOn { get; set; }
-        
+
         [Column("last_modified")]
         public DateTime LastModified { get; set; }
     }
