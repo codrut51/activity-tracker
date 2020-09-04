@@ -5,6 +5,12 @@ namespace Activity.Repository
 {
     public class UserRepository : IRepository<UsersModel>
     {
+        private readonly DbContextPg db;
+        public UserRepository(DbContextPg db)
+        {
+            this.db = db;
+        }
+
         public void addOne(UsersModel item)
         {
         }
