@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Activity.Models;
 
 namespace Activity.Repository
@@ -17,11 +19,19 @@ namespace Activity.Repository
 
         public System.Linq.IQueryable<UsersModel> getAll()
         {
-            return null;
+            if(db.Users.Count() != 0)
+            {
+                return db.Users.AsQueryable();
+            }
+            return new List<UsersModel>().AsQueryable();
         }
 
         public UsersModel getOne(Guid id)
         {
+            if (db.Users.Count() != 0)
+            {
+                return db.Users.FirstOrDefault(p => p.Id.Equals(id));
+            }
             return null;
         }
 
