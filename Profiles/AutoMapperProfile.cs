@@ -18,8 +18,12 @@ namespace Activity.Profiles
             .ForMember(dest => dest.User, opt => opt.Ignore())
             .ForMember(dest => dest.Title, opt => opt.MapFrom(q => q.Title))
             .ForMember(dest => dest.Description, opt => opt.MapFrom(q => q.Description))
-            .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(src => DateTime.UtcNow))
-            .ForMember(dest => dest.LastModified, opt => opt.MapFrom(src => DateTime.UtcNow));
+            .ForMember(dest => dest.CreatedOn, opt => opt.UseDestinationValue())
+            .ForMember(dest => dest.LastModified, opt => opt.UseDestinationValue());
+            CreateMap<ActivityModel, ActivityModel>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+            
+            // .ForMember(dest => dest.CreatedOn, opt => opt.UseDestinationValue())
         }
     }
 }

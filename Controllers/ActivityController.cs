@@ -48,16 +48,29 @@ namespace Activity.Controllers
         public ActionResult<ActivityDto> AddActivity(ActivityCreateDto am)
         {
             var activityModel = mapper.Map<ActivityModel>(am);
+            var date = DateTime.Now;
             activityModel.User = usersRepo.getOne(am.UserId) ?? throw new Exception("User not found!");
+            activityModel.CreatedOn = date;
+            activityModel.LastModified = date;
             activityRepo.addOne(activityModel);
             activityRepo.saveChanges();
             return Ok(mapper.Map<ActivityDto>(activityModel));
         }
 
-        [HttpPut]
-        public ActionResult UpdateActivity(int id, ActivityModel am)
+        [HttpPut("{id}")]
+        public ActionResult UpdateActivity(String id, ActivityCreateDto am)
         {
-            return null;
+            var activityId = Guid.Parse(id);
+            
+            var activityModel = activityRepo.getOne(activityId);
+            var activityUpdated = mapper.Map<ActivityModel>(am);
+            activityUpdated.User = usersRepo.getOne(am.UserId) ?? throw new Exception("User not found!");
+            activityUpdated.LastModified = DateTime.Now;
+            activityUpdated.CreatedOn = activityModel.CreatedOn;
+            activityModel = mapper.Map<ActivityModel, ActivityModel>(activityUpdated, activityModel);
+            activityRepo.updateOne(activityModel);
+            activityRepo.saveChanges();
+            return Ok();
         }
 
         [HttpDelete]
