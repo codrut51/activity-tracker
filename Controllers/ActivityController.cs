@@ -6,6 +6,7 @@ using System;
 using AutoMapper;
 using Activity.Data.Read;
 using Activity.Data.Create;
+using System.Linq;
 
 namespace Activity.Controllers
 {
@@ -14,12 +15,14 @@ namespace Activity.Controllers
     public class ActivityController : ControllerBase
     {
         private readonly IRepository<ActivityModel> activityRepo;
+        private readonly IRepository<UsersModel> usersRepo;
         private readonly IMapper mapper;
 
-        public ActivityController(IRepository<ActivityModel> activityRepo, IMapper mapper)
+        public ActivityController(IRepository<ActivityModel> activityRepo, IRepository<UsersModel> usersRepo, IMapper mapper)
         {
             this.activityRepo = activityRepo;
             this.mapper = mapper;
+            this.usersRepo = usersRepo;
         }
 
         //GET api/activity
@@ -42,12 +45,13 @@ namespace Activity.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ActivityModel> AddActivity(ActivityCreateDto am)
+        public ActionResult<ActivityDto> AddActivity(ActivityCreateDto am)
         {
             var activityModel = mapper.Map<ActivityModel>(am);
-            //    activityRepo.addOne(activityModel);
-            //    activityRepo.saveChanges();
-            return Ok(activityModel);
+            activityModel.User = usersRepo.getOne(am.UserId) ?? throw new Exception("User not found!");
+            activityRepo.addOne(activityModel);
+            activityRepo.saveChanges();
+            return Ok(mapper.Map<ActivityDto>(activityModel));
         }
 
         [HttpPut]

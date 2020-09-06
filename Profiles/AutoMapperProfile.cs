@@ -3,6 +3,7 @@ using Activity.Data.Create;
 using Activity.Data.Read;
 using Activity.Models;
 using AutoMapper;
+using System.Linq;
 
 namespace Activity.Profiles
 {
@@ -10,10 +11,13 @@ namespace Activity.Profiles
     {
         public AutoMapperProfile()
         {
-            var date = DateTime.Now;
             CreateMap<ActivityModel, ActivityDto>();
             CreateMap<UsersModel, UserDto>();
             CreateMap<ActivityCreateDto, ActivityModel>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
+            .ForMember(dest => dest.User, opt => opt.Ignore())
+            .ForMember(dest => dest.Title, opt => opt.MapFrom(q => q.Title))
+            .ForMember(dest => dest.Description, opt => opt.MapFrom(q => q.Description))
             .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(src => DateTime.UtcNow))
             .ForMember(dest => dest.LastModified, opt => opt.MapFrom(src => DateTime.UtcNow));
         }
