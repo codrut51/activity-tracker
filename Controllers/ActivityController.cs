@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Activity.Models;
 using Activity.Repository;
 using System;
-using System.Diagnostics;
 using AutoMapper;
-using Activity.Data;
+using Activity.Data.Read;
+using Activity.Data.Create;
 
 namespace Activity.Controllers
 {
@@ -42,7 +42,7 @@ namespace Activity.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ActivityModel> AddActivity(ActivityViewDto am)
+        public ActionResult<ActivityModel> AddActivity(ActivityCreateDto am)
         {
             var activityModel = mapper.Map<ActivityModel>(am);
             //    activityRepo.addOne(activityModel);

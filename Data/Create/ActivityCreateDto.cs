@@ -1,8 +1,8 @@
 using System;
 
-namespace Activity.Data
+namespace Activity.Data.Create
 {
-    public class ActivityViewDto
+    public class ActivityCreateDto
     {
         public string Title { get; set; }
         public string Description { get; set; }

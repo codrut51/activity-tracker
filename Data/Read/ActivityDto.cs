@@ -1,10 +1,10 @@
 using System;
 
-namespace Activity.Data
+namespace Activity.Data.Read
 {
     public class ActivityDto
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreatedOn { get; set; }

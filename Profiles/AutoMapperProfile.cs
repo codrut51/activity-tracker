@@ -1,5 +1,6 @@
 using System;
-using Activity.Data;
+using Activity.Data.Create;
+using Activity.Data.Read;
 using Activity.Models;
 using AutoMapper;
 
@@ -12,7 +13,7 @@ namespace Activity.Profiles
             var date = DateTime.Now;
             CreateMap<ActivityModel, ActivityDto>();
             CreateMap<UsersModel, UserDto>();
-            CreateMap<ActivityViewDto, ActivityModel>()
+            CreateMap<ActivityCreateDto, ActivityModel>()
             .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(src => DateTime.UtcNow))
             .ForMember(dest => dest.LastModified, opt => opt.MapFrom(src => DateTime.UtcNow));
         }
