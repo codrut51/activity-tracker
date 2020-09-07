@@ -37,11 +37,16 @@ namespace Activity.Repository
 
         public bool saveChanges()
         {
-            throw new NotImplementedException();
+            return db.SaveChanges() > 0;
         }
 
         public void updateOne(UsersModel item)
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+            db.Users.Update(item);
         }
     }
 }
