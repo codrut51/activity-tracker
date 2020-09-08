@@ -14,7 +14,12 @@ namespace Activity.Repository
         }
 
         public void addOne(UsersModel item)
-        {
+        {            
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+            db.Users.Add(item);
         }
 
         public System.Linq.IQueryable<UsersModel> getAll()
